@@ -430,3 +430,7 @@ FodyWeavers.xsd
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+.idea/.idea.CommentSystem/.idea/dataSources.local.xml
+.idea/.idea.CommentSystem/.idea/indexLayout.xml
+.idea/.idea.CommentSystem/.idea/projectSettingsUpdater.xml
+.idea/.idea.CommentSystem/.idea/workspace.xml
