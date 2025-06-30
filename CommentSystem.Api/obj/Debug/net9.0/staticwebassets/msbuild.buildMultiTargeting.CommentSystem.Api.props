@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/CommentSystem.Api.props" />
+</Project>

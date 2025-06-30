@@ -1,0 +1,11 @@
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/bin/Debug/net9.0/CommentSystem.Domain.deps.json
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/bin/Debug/net9.0/CommentSystem.Domain.dll
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/bin/Debug/net9.0/CommentSystem.Domain.pdb
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/obj/Debug/net9.0/CommentSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/obj/Debug/net9.0/CommentSystem.Domain.AssemblyInfoInputs.cache
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/obj/Debug/net9.0/CommentSystem.Domain.AssemblyInfo.cs
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/obj/Debug/net9.0/CommentSystem.Domain.csproj.CoreCompileInputs.cache
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/obj/Debug/net9.0/CommentSystem.Domain.dll
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/obj/Debug/net9.0/refint/CommentSystem.Domain.dll
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/obj/Debug/net9.0/CommentSystem.Domain.pdb
+/Users/mahdi/RiderProjects/CommentSystem/CommentSystem.Domain/obj/Debug/net9.0/ref/CommentSystem.Domain.dll
