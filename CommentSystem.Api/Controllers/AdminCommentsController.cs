@@ -13,7 +13,6 @@ namespace CommentSystem.Api.Controllers;
 [Route("api/admin/comments")]
 [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(ProblemDetails))]
 [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ProblemDetails))]
-
 public class AdminCommentsController(ICommentService commentService, ICurrentUserService currentUserService)
     : ApiControllerBase
 {
