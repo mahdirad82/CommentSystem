@@ -16,8 +16,7 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
                 "This booking either does not exist, does not belong to you, or already has a comment associated with it.");
 
         var comment = mapper.Map<Comment>(dto);
-        
-        
+
         await commentRepository.AddAsync(comment);
         await commentRepository.SaveChangesAsync();
         return Result.Success();
@@ -51,6 +50,7 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
         var comments = await commentRepository.GetAllAsync(status);
         if (!comments.Any())
             return Result<IEnumerable<AdminCommentDto>>.Failure("No comments found.");
+
         var systemComments = mapper.Map<IEnumerable<AdminCommentDto>>(comments);
         return Result<IEnumerable<AdminCommentDto>>.Success(systemComments);
     }
@@ -65,7 +65,6 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
             return Result.Failure("Comment is not pending.");
 
         comment.Status = dto.NewStatus;
-        Console.WriteLine(dto.NewStatus);
         await commentRepository.SaveChangesAsync();
         return Result.Success();
     }
