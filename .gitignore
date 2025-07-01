@@ -444,3 +444,6 @@ CommentSystem.Api/commentSystem.db
 CommentSystem.Api/commentSystem.db-shm
 CommentSystem.Api/commentSystem.db-wal
 CommentSystem.Api/CommentSystem.Api.http
+.idea/.idea.CommentSystem/.idea/vcs.xml
+.idea/.idea.CommentSystem/.idea/dataSources.xml
+.idea/.idea.CommentSystem/.idea/dataSources/98017c3d-68ef-45aa-8a7e-4b38c7df962a.xml

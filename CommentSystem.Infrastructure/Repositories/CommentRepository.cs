@@ -26,8 +26,16 @@ public class CommentRepository(AppDbContext context) : ICommentRepository
             .Where(c => c.Booking.UserId == userId).ToListAsync();
     }
 
-    public async Task<IEnumerable<Comment>> GetAllAsync() =>
-        await context.Comments.AsNoTracking().ToListAsync();
+    public async Task<IEnumerable<Comment>> GetAllAsync(CommentStatus? status = null)
+    {
+        var query = context.Comments.AsNoTracking();
+        if (status.HasValue)
+        {
+            query = query.Where(c => c.Status == status.Value);
+        }
+
+        return await query.ToListAsync();
+    }
 
     public async Task<bool> IsBookingAvailableForCommentAsync(int bookingId, int userId)
     {

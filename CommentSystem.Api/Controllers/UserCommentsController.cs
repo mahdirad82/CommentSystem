@@ -32,21 +32,4 @@ public class UserCommentsController(ICommentService commentService, ICurrentUser
 
         return result.IsFailure ? NotFoundResult(result.Error) : Ok(result.Value);
     }
-
-    // [HttpGet("hotel/{hotelId:int}")]
-    // public async Task<IActionResult> GetApprovedCommentsForHotel([FromRoute] int hotelId)
-    // {
-    //     var result = await _commentService.GetApprovedCommentsForHotelAsync(hotelId);
-    //
-    //     if (result.IsFailure)
-    //     {
-    //         return Problem(
-    //             statusCode: StatusCodes.Status404NotFound,
-    //             title: "No Comments Found",
-    //             detail: result.Error
-    //         );
-    //     }
-    //
-    //     return Ok(result.Value);
-    // }
 }

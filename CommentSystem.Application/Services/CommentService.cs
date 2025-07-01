@@ -48,7 +48,7 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
     public async Task<Result<IEnumerable<AdminCommentDto>>> GetAllSystemCommentsAsync(
         CommentStatus? status)
     {
-        var comments = await commentRepository.GetAllAsync();
+        var comments = await commentRepository.GetAllAsync(status);
         if (!comments.Any())
             return Result<IEnumerable<AdminCommentDto>>.Failure("No comments found.");
         var systemComments = mapper.Map<IEnumerable<AdminCommentDto>>(comments);
@@ -65,6 +65,7 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
             return Result.Failure("Comment is not pending.");
 
         comment.Status = dto.NewStatus;
+        Console.WriteLine(dto.NewStatus);
         await commentRepository.SaveChangesAsync();
         return Result.Success();
     }
