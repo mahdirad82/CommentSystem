@@ -7,7 +7,6 @@ using CommentSystem.Infrastructure.Repositories;
 using CommentSystem.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.OperationFilter<AddCustomHeadersOperationFilter>();
+    options.DocumentFilter<ProblemDetailsSchemaFilter>();
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });

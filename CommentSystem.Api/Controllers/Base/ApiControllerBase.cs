@@ -12,6 +12,7 @@ public abstract class ApiControllerBase : ControllerBase
     /// </summary>
     /// <param name="detail">Optional: A detailed error message.</param>
     /// <returns>An <see cref="ActionResult"/> representing a 403 Forbidden response.</returns>
+    
     protected ActionResult ForbiddenResult(string? detail = null) =>
         Problem(
             statusCode: StatusCodes.Status403Forbidden,
@@ -23,6 +24,7 @@ public abstract class ApiControllerBase : ControllerBase
     /// </summary>
     /// <param name="error">Optional: A detailed error message.</param>
     /// <returns>An <see cref="ActionResult"/> representing a 400 Bad Request response.</returns>
+    
     protected ActionResult BadRequestResult(string? error = null) =>
         Problem(
             statusCode: StatusCodes.Status400BadRequest,
@@ -34,6 +36,7 @@ public abstract class ApiControllerBase : ControllerBase
     /// </summary>
     /// <param name="error">Optional: A detailed error message.</param>
     /// <returns>An <see cref="ActionResult"/> representing a 404 Not Found response.</returns>
+    
     protected ActionResult NotFoundResult(string? error = null) =>
         Problem(
             statusCode: StatusCodes.Status404NotFound,

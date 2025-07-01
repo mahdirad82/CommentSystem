@@ -11,6 +11,7 @@ namespace CommentSystem.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/user/comments")]
+[ProducesResponseType(StatusCodes.Status403Forbidden)]
 public class UserCommentsController(ICommentService commentService, ICurrentUserService currentUser)
     : ApiControllerBase
 {
@@ -19,6 +20,8 @@ public class UserCommentsController(ICommentService commentService, ICurrentUser
     /// </summary>
     /// <returns>A list of user comments for the user.</returns>
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<UserCommentDto>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<UserCommentDto>>> GetUserComments()
     {
         if (currentUser.Role != UserRole.User)
@@ -35,6 +38,8 @@ public class UserCommentsController(ICommentService commentService, ICurrentUser
     /// <param name="dto">The DTO containing comment details.</param>
     /// <returns>No content if successful, or an error result.</returns>
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ValidationProblemDetails))]
     public async Task<ActionResult> CreateComment([FromBody] CreateCommentDto dto)
     {
         if (currentUser.Role != UserRole.User)

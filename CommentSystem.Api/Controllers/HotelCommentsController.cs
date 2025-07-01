@@ -19,6 +19,8 @@ public class HotelCommentsController(ICommentService commentService)
     /// <param name="hotelId">The ID of the hotel.</param>
     /// <returns>A list of public comments.</returns>
     [HttpGet("{hotelId:int}/comments")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PublicCommentDto>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ProblemDetails))]
     public async Task<ActionResult<IEnumerable<PublicCommentDto>>> GetApprovedComments(int hotelId)
     {
         var result = await commentService.GetApprovedCommentsForHotelAsync(hotelId);

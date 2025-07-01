@@ -11,6 +11,8 @@ namespace CommentSystem.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/admin/comments")]
+[ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(ProblemDetails))]
+[ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ProblemDetails))]
 public class AdminCommentsController(ICommentService commentService, ICurrentUserService currentUserService)
     : ApiControllerBase
 {
@@ -20,6 +22,7 @@ public class AdminCommentsController(ICommentService commentService, ICurrentUse
     /// <param name="status">The status of the comments to retrieve.</param>
     /// <returns>A list of admin comments.</returns>
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<AdminCommentDto>))]
     public async Task<ActionResult<IEnumerable<AdminCommentDto>>> GetAllSystemComments(
         [FromQuery] CommentStatus? status)
     {
@@ -38,6 +41,8 @@ public class AdminCommentsController(ICommentService commentService, ICurrentUse
     /// <param name="commentStatusDto">The DTO containing the new status.</param>
     /// <returns>No content if successful, or an error result.</returns>
     [HttpPut("{commentId:int}/status")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
     public async Task<ActionResult> UpdateCommentStatus(int commentId,
         [FromBody] UpdateCommentStatusDto commentStatusDto)
     {
