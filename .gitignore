@@ -440,3 +440,6 @@ CommentSystem.Api/bin/Debug/net9.0/Microsoft.Data.Sqlite.dll
 CommentSystem.Api/bin/Debug/net9.0/CommentSystem.Infrastructure.pdb
 /CommentSystem.Api/bin
 /CommentSystem.Api/bin
+CommentSystem.Api/commentSystem.db
+CommentSystem.Api/commentSystem.db-shm
+CommentSystem.Api/commentSystem.db-wal
