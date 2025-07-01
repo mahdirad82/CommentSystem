@@ -39,12 +39,13 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         
         for (var i = 1; i <= 30; i++)
         {
+            var bookingDate = faker.Date.Past(5);
             bookings.Add(new Booking
             {
                 Id = i,
                 UserId = faker.Random.Int(1, 10),
                 HotelId = faker.Random.Int(1, 5),
-                BookingDate = faker.Date.Past()
+                BookingDate = bookingDate
             });
 
             if (i % 2 == 0)
@@ -56,7 +57,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
                     Content = faker.Lorem.Paragraph(faker.Random.Int(1, 6)),
                     Rating = faker.Random.Int(1, 5),
                     Status = CommentStatus.Pending,
-                    CreatedAt = faker.Date.Recent(60)
+                    CreatedAt = faker.Date.Soon(10, bookingDate)
                 });
             }
         }
