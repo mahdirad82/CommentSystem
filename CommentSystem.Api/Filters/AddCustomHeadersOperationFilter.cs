@@ -1,7 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace CommentSystem.Api;
+namespace CommentSystem.Api.Filters;
 
 /// <summary>
 /// Adds custom headers (UserId, Role) to Swagger operations for authentication/authorization.

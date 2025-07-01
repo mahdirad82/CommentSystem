@@ -1,7 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace CommentSystem.Api;
+namespace CommentSystem.Api.Filters;
 
 /// <summary>
 /// Applies a schema filter to ProblemDetails and ValidationProblemDetails to customize their representation in Swagger/OpenAPI documentation.

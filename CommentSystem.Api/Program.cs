@@ -1,4 +1,4 @@
-using CommentSystem.Api;
+using CommentSystem.Api.Filters;
 using CommentSystem.Application.Interfaces;
 using CommentSystem.Application.Mappings;
 using CommentSystem.Application.Services;
