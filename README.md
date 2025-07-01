@@ -51,7 +51,7 @@ This project follows a clean architecture pattern, separating concerns into dist
 
 ### Database Setup
 
-The application uses SQLite, and the database file (`commentSystem.db`) will be created automatically in the `Data` directory at the project root when the application runs for the first time and attempts to access the database.
+The application uses SQLite, and the database file (`commentSystem.db`) will be created automatically in the project's output directory (typically the project root) when the application runs for the first time and attempts to access the database.
 
 ## API Endpoints
 
