@@ -2,11 +2,11 @@ namespace CommentSystem.Domain.Entities;
 
 public class Booking
 {
-    public int Id { get; set; }
-    public int UserId { get; set; }
-    public int HotelId { get; set; }
-    public DateTime BookingDate { get; set; }
+    public int Id { get; init; }
+    public int UserId { get; init; }
+    public int HotelId { get; init; }
+    public DateTime BookingDate { get; init; }
 
     // Optional relation
-    public Comment? Comment { get; set; }
+    public Comment? Comment { get; init; }
 }

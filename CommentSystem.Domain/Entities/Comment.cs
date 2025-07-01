@@ -4,12 +4,12 @@ namespace CommentSystem.Domain.Entities;
 
 public class Comment
 {
-    public int Id { get; set; }
-    public string Content { get; set; } = string.Empty;
-    public int Rating { get; set; }
+    public int Id { get; init; }
+    public required string Content { get; init; }
+    public int Rating { get; init; }
     public CommentStatus Status { get; set; }
     public DateTime CreatedAt { get; set; }
 
-    public int BookingId { get; set; }
-    public Booking Booking { get; set; } = default!;
+    public int BookingId { get; init; }
+    public Booking Booking { get; init; } = null!;
 }
