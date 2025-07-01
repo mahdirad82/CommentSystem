@@ -22,7 +22,7 @@ This project follows a clean architecture pattern, separating concerns into dist
 
 ### Prerequisites
 
-*   .NET SDK (version 8.0 or later)
+*   .NET SDK (version 9.0 or later)
 
 ### Running the Application
 
