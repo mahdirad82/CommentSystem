@@ -447,3 +447,7 @@ CommentSystem.Api/CommentSystem.Api.http
 .idea/.idea.CommentSystem/.idea/vcs.xml
 .idea/.idea.CommentSystem/.idea/dataSources.xml
 .idea/.idea.CommentSystem/.idea/dataSources/98017c3d-68ef-45aa-8a7e-4b38c7df962a.xml
+Data/commentSystem.db
+Data/commentSystem.db-shm
+Data/commentSystem.db-wal
+.DS_Store

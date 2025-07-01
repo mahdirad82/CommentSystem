@@ -11,6 +11,26 @@ namespace CommentSystem.Api.Controllers;
 public class UserCommentsController(ICommentService commentService, ICurrentUserService currentUser)
     : ApiControllerBase
 {
+    /// <summary>
+    /// Gets comments for the current user.
+    /// </summary>
+    /// <returns>A list of user comments for the user.</returns>
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<UserCommentDto>>> GetUserComments()
+    {
+        if (currentUser.Role != UserRole.User)
+            return ForbiddenResult();
+
+        var result = await commentService.GetCommentsForUserAsync(currentUser.UserId);
+
+        return result.IsFailure ? NotFoundResult(result.Error) : Ok(result.Value);
+    }
+
+    /// <summary>
+    /// Creates a new comment.
+    /// </summary>
+    /// <param name="dto">The DTO containing comment details.</param>
+    /// <returns>No content if successful, or an error result.</returns>
     [HttpPost]
     public async Task<ActionResult> CreateComment([FromBody] CreateCommentDto dto)
     {
@@ -20,16 +40,5 @@ public class UserCommentsController(ICommentService commentService, ICurrentUser
         var result = await commentService.CreateCommentAsync(dto, currentUser.UserId);
 
         return result.IsFailure ? BadRequestResult(result.Error) : Created();
-    }
-
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<PublicCommentDto>>> GetUserComments()
-    {
-        if (currentUser.Role != UserRole.User)
-            return ForbiddenResult();
-
-        var result = await commentService.GetCommentsForUserAsync(currentUser.UserId);
-
-        return result.IsFailure ? NotFoundResult(result.Error) : Ok(result.Value);
     }
 }

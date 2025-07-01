@@ -10,6 +10,11 @@ namespace CommentSystem.Api.Controllers;
 public class HotelCommentsController(ICommentService commentService)
     : ApiControllerBase
 {
+    /// <summary>
+    /// Gets approved comments for a specific hotel.
+    /// </summary>
+    /// <param name="hotelId">The ID of the hotel.</param>
+    /// <returns>A list of public comments.</returns>
     [HttpGet("{hotelId:int}/comments")]
     public async Task<ActionResult<IEnumerable<PublicCommentDto>>> GetApprovedComments(int hotelId)
     {

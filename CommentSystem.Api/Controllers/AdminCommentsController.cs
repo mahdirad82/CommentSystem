@@ -11,6 +11,11 @@ namespace CommentSystem.Api.Controllers;
 public class AdminCommentsController(ICommentService commentService, ICurrentUserService currentUserService)
     : ApiControllerBase
 {
+    /// <summary>
+    /// Gets all system comments, optionally filtered by status for Admins.
+    /// </summary>
+    /// <param name="status">The status of the comments to retrieve.</param>
+    /// <returns>A list of admin comments.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AdminCommentDto>>> GetAllSystemComments(
         [FromQuery] CommentStatus? status)
@@ -23,6 +28,12 @@ public class AdminCommentsController(ICommentService commentService, ICurrentUse
         return result.IsFailure ? NotFoundResult(result.Error) : Ok(result.Value);
     }
 
+    /// <summary>
+    /// Updates the status of a pending comment.
+    /// </summary>
+    /// <param name="id">The ID of the comment to update.</param>
+    /// <param name="dto">The DTO containing the new status.</param>
+    /// <returns>No content if successful, or an error result.</returns>
     [HttpPut("{id:int}/status")]
     public async Task<ActionResult> UpdateCommentStatus(int id, [FromBody] UpdateCommentStatusDto dto)
     {
