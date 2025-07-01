@@ -44,10 +44,10 @@ This project follows a clean architecture pattern, separating concerns into dist
     dotnet run --project CommentSystem.Api
     ```
 
-    The API will typically run on `https://localhost:7000` (or a similar port).
+    The API will typically run on `http://localhost:5000` (or a similar port).
 
 5.  **Access Swagger UI:**
-    Once the API is running, you can access the Swagger UI for interactive API documentation and testing at `https://localhost:7000/swagger`.
+    Once the API is running, you can access the Swagger UI for interactive API documentation and testing at `http://localhost:5000/swagger`.
 
 ### Database Setup
 
