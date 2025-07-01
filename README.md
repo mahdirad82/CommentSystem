@@ -28,7 +28,7 @@ This project follows a clean architecture pattern, separating concerns into dist
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/mahdirad82/CommentSystem.git
     cd CommentSystem
     ```
 2.  **Restore dependencies:**
