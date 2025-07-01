@@ -6,6 +6,8 @@ using CommentSystem.Infrastructure.Persistence;
 using CommentSystem.Infrastructure.Repositories;
 using CommentSystem.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddProblemDetails();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => options.OperationFilter<AddCustomHeadersOperationFilter>());
+builder.Services.AddSwaggerGen(options =>
+{
+    options.OperationFilter<AddCustomHeadersOperationFilter>();
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
 
 var connectionString = builder.Configuration.GetConnectionString("SqliteConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
