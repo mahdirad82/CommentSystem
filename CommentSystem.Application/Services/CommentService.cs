@@ -26,7 +26,7 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
     public async Task<Result<IEnumerable<PublicCommentDto>>> GetApprovedCommentsForHotelAsync(
         int hotelId)
     {
-        var comments = await commentRepository.GetByHotelIdAndStatusAsync(hotelId);
+        var comments = await commentRepository.GetByHotelIdAndStatusAsync(hotelId, CommentStatus.Approved);
         if (!comments.Any())
             return Result<IEnumerable<PublicCommentDto>>.Failure(
                 "No approved comments found for this hotel.");
