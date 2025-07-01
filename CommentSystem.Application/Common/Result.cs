@@ -2,7 +2,7 @@ namespace CommentSystem.Application.Common;
 
 public class Result
 {
-    public bool IsSuccess { get; }
+    private bool IsSuccess { get; }
     public string? Error { get; }
 
     public bool IsFailure => !IsSuccess;
@@ -15,10 +15,5 @@ public class Result
 
     public static Result Success() => new(true, null);
     public static Result Failure(string error) => new(false, error);
-
-    public void ThrowIfFailed()
-    {
-        if (IsFailure)
-            throw new InvalidOperationException(Error ?? "An unknown error occurred.");
-    }
+    
 }

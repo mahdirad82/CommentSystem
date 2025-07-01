@@ -2,7 +2,7 @@ namespace CommentSystem.Application.Common;
 
 public class Result<T>
 {
-    public bool IsSuccess { get; }
+    private bool IsSuccess { get; }
     public T? Value { get; }
     public string? Error { get; }
 
