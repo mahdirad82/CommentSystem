@@ -31,16 +31,17 @@ public class AdminCommentsController(ICommentService commentService, ICurrentUse
     /// <summary>
     /// Updates the status of a pending comment.
     /// </summary>
-    /// <param name="id">The ID of the comment to update.</param>
-    /// <param name="dto">The DTO containing the new status.</param>
+    /// <param name="commentId">The ID of the comment to update.</param>
+    /// <param name="commentStatusDto">The DTO containing the new status.</param>
     /// <returns>No content if successful, or an error result.</returns>
-    [HttpPut("{id:int}/status")]
-    public async Task<ActionResult> UpdateCommentStatus(int id, [FromBody] UpdateCommentStatusDto dto)
+    [HttpPut("{commentId:int}/status")]
+    public async Task<ActionResult> UpdateCommentStatus(int commentId,
+        [FromBody] UpdateCommentStatusDto commentStatusDto)
     {
         if (currentUserService.Role != UserRole.Admin)
             return ForbiddenResult();
 
-        var result = await commentService.UpdateCommentStatusAsync(id, dto);
+        var result = await commentService.UpdateCommentStatusAsync(commentId, commentStatusDto);
         if (result.IsFailure)
         {
             return result.Error switch
