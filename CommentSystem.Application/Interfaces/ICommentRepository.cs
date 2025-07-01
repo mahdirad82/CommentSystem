@@ -8,8 +8,7 @@ public interface ICommentRepository
     Task AddAsync(Comment comment);
     Task<Comment?> GetByIdAsync(int id);
 
-    Task<IEnumerable<Comment>> GetByHotelIdAndStatusAsync(int hotelId,
-        CommentStatus status = CommentStatus.Approved);
+    Task<IEnumerable<Comment>> GetByHotelIdAndStatusAsync(int hotelId, CommentStatus status);
 
     Task<IEnumerable<Comment>> GetByUserIdAsync(int userId);
     Task<IEnumerable<Comment>> GetAllAsync(CommentStatus? status = null);
