@@ -63,6 +63,9 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
 
         if (comment.Status != CommentStatus.Pending)
             return Result.Failure("Comment is not pending.");
+        
+        if (dto.NewStatus is not (CommentStatus.Approved or CommentStatus.Rejected))
+            return Result.Failure("New Status is not approved or not rejected.");
 
         comment.Status = dto.NewStatus;
         await commentRepository.SaveChangesAsync();

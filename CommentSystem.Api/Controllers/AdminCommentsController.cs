@@ -13,6 +13,7 @@ namespace CommentSystem.Api.Controllers;
 [Route("api/admin/comments")]
 [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(ProblemDetails))]
 [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ProblemDetails))]
+
 public class AdminCommentsController(ICommentService commentService, ICurrentUserService currentUserService)
     : ApiControllerBase
 {
@@ -23,6 +24,7 @@ public class AdminCommentsController(ICommentService commentService, ICurrentUse
     /// <returns>A list of admin comments.</returns>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<AdminCommentDto>))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ValidationProblemDetails))]
     public async Task<ActionResult<IEnumerable<AdminCommentDto>>> GetAllSystemComments(
         [FromQuery] CommentStatus? status)
     {
