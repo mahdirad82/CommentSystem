@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommentSystem.Api.Controllers.Base;
 
+/// <summary>
+/// Base controller for API endpoints, providing common functionality and error handling.
+/// </summary>
 public abstract class ApiControllerBase : ControllerBase
 {
     protected ActionResult ForbiddenResult(string? detail = null) =>

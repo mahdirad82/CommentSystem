@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommentSystem.Api.Controllers;
 
+/// <summary>
+/// Manages user-specific operations related to comments.
+/// </summary>
 [ApiController]
 [Route("api/user/comments")]
 public class UserCommentsController(ICommentService commentService, ICurrentUserService currentUser)

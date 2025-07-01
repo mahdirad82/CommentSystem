@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommentSystem.Api.Controllers;
 
+/// <summary>
+/// Manages comments related to hotels.
+/// </summary>
 [ApiController]
 [Route("api/hotels")]
 public class HotelCommentsController(ICommentService commentService)

@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommentSystem.Api.Controllers;
 
+/// <summary>
+/// Manages administrative operations related to comments.
+/// </summary>
 [ApiController]
 [Route("api/admin/comments")]
 public class AdminCommentsController(ICommentService commentService, ICurrentUserService currentUserService)
