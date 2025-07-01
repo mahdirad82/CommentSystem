@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CommentSystem.Infrastructure.Repositories;
 
-// پیاده‌سازی اینترفیس ریپازیتوری با استفاده از EF Core
+
 public class CommentRepository(AppDbContext context) : ICommentRepository
 {
     public async Task AddAsync(Comment comment) => await context.Comments.AddAsync(comment);
