@@ -16,8 +16,8 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
                 "This booking either does not exist, does not belong to you, or already has a comment associated with it.");
 
         var comment = mapper.Map<Comment>(dto);
-        comment.CreatedAt = DateTime.UtcNow;
-        comment.Status = CommentStatus.Pending;
+        
+        
         await commentRepository.AddAsync(comment);
         await commentRepository.SaveChangesAsync();
         return Result.Success();

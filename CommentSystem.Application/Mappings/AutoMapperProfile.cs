@@ -8,7 +8,8 @@ public class AutoMapperProfile : Profile
 {
     public AutoMapperProfile()
     {
-        CreateMap<CreateCommentDto, Comment>();
+        CreateMap<CreateCommentDto, Comment>()
+            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.UtcNow));
         CreateMap<Comment, PublicCommentDto>();
 
         CreateMap<Comment, AdminCommentDto>()
