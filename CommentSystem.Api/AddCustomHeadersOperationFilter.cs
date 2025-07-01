@@ -3,8 +3,16 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace CommentSystem.Api;
 
+/// <summary>
+/// Adds custom headers (UserId, Role) to Swagger operations for authentication/authorization.
+/// </summary>
 public class AddCustomHeadersOperationFilter : IOperationFilter
 {
+    /// <summary>
+    /// Applies the filter to the specified operation.
+    /// </summary>
+    /// <param name="operation">The OpenAPI operation.</param>
+    /// <param name="context">The operation filter context.</param>
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         operation.Parameters ??= new List<OpenApiParameter>();
