@@ -36,7 +36,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         var faker = new Faker();
         var bookings = new List<Booking>();
         var comments = new List<Comment>();
-
+        
         for (var i = 1; i <= 30; i++)
         {
             bookings.Add(new Booking
@@ -44,7 +44,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
                 Id = i,
                 UserId = faker.Random.Int(1, 10),
                 HotelId = faker.Random.Int(1, 5),
-                BookingDate = faker.Date.Past(1)
+                BookingDate = faker.Date.Past()
             });
 
             if (i % 2 == 0)
