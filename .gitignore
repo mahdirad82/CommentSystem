@@ -443,3 +443,4 @@ CommentSystem.Api/bin/Debug/net9.0/CommentSystem.Infrastructure.pdb
 CommentSystem.Api/commentSystem.db
 CommentSystem.Api/commentSystem.db-shm
 CommentSystem.Api/commentSystem.db-wal
+CommentSystem.Api/CommentSystem.Api.http

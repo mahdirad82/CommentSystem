@@ -1,6 +1,0 @@
-@CommentSystem.Api_HostAddress = http://localhost:5123
-
-GET {{CommentSystem.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
