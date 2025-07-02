@@ -22,9 +22,13 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
-var connectionString = builder.Configuration.GetConnectionString("SqliteConnection");
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(connectionString));
+// Conditional DbContext registration
+if (!builder.Environment.IsEnvironment("Test"))
+{
+    var connectionString = builder.Configuration.GetConnectionString("SqliteConnection");
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlite(connectionString));
+}
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
@@ -55,8 +59,12 @@ app.UseExceptionHandler();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.MapControllers();
 
 app.Run();
+/// <summary>
+/// This partial class is added to make the Program class accessible for testing purposes.
+/// </summary>
+public partial class Program;

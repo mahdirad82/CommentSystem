@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{450E6A4E-4D24-4FCA-880D-F7AA3CC54297}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentSystem.Domain", "CommentSystem.Domain\CommentSystem.Domain.csproj", "{C27F1F3F-0805-4EBD-8493-FF9936EE7B86}"
@@ -9,6 +10,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentSystem.Infrastructure", "CommentSystem.Infrastructure\CommentSystem.Infrastructure.csproj", "{A497DBBA-6C69-47B9-B26C-621C100A5D11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentSystem.Api", "CommentSystem.Api\CommentSystem.Api.csproj", "{FD6F257C-C3F9-4701-9439-32F7047B34C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0948EBC1-AC73-4A3E-B2EC-54D650BDC48F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentSystem.Application.Tests", "tests\CommentSystem.Application.Tests\CommentSystem.Application.Tests.csproj", "{E646094F-49FC-47E1-902E-9CAF5243E15E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentSystem.Api.Tests", "tests\CommentSystem.Api.Tests\CommentSystem.Api.Tests.csproj", "{34E3B3B2-F8DC-4877-AE4B-FC020CDDDEB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +27,8 @@ Global
 		{8BF9278F-5A31-4BBA-9645-B0994C6B5831} = {450E6A4E-4D24-4FCA-880D-F7AA3CC54297}
 		{A497DBBA-6C69-47B9-B26C-621C100A5D11} = {450E6A4E-4D24-4FCA-880D-F7AA3CC54297}
 		{FD6F257C-C3F9-4701-9439-32F7047B34C5} = {450E6A4E-4D24-4FCA-880D-F7AA3CC54297}
+		{E646094F-49FC-47E1-902E-9CAF5243E15E} = {0948EBC1-AC73-4A3E-B2EC-54D650BDC48F}
+		{34E3B3B2-F8DC-4877-AE4B-FC020CDDDEB8} = {0948EBC1-AC73-4A3E-B2EC-54D650BDC48F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C27F1F3F-0805-4EBD-8493-FF9936EE7B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -38,5 +47,13 @@ Global
 		{FD6F257C-C3F9-4701-9439-32F7047B34C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD6F257C-C3F9-4701-9439-32F7047B34C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD6F257C-C3F9-4701-9439-32F7047B34C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E646094F-49FC-47E1-902E-9CAF5243E15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E646094F-49FC-47E1-902E-9CAF5243E15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E646094F-49FC-47E1-902E-9CAF5243E15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E646094F-49FC-47E1-902E-9CAF5243E15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E3B3B2-F8DC-4877-AE4B-FC020CDDDEB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E3B3B2-F8DC-4877-AE4B-FC020CDDDEB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E3B3B2-F8DC-4877-AE4B-FC020CDDDEB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E3B3B2-F8DC-4877-AE4B-FC020CDDDEB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
