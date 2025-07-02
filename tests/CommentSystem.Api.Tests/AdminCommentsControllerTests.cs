@@ -21,7 +21,7 @@ public class AdminCommentsControllerTests : IClassFixture<CustomWebApplicationFa
         _commentRepositoryMock = factory.CommentRepositoryMock;
         _currentUserServiceMock = factory.CurrentUserServiceMock;
 
-        // Clear invocations and reset mocks before each test to ensure isolation
+        // Reset mocks before each test to ensure isolation
         _commentRepositoryMock.Invocations.Clear();
         _currentUserServiceMock.Invocations.Clear();
 

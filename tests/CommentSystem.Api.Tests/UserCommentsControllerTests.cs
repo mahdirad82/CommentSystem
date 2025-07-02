@@ -13,20 +13,21 @@ public class UserCommentsControllerTests : IClassFixture<CustomWebApplicationFac
 {
     private readonly HttpClient _client;
     private readonly Mock<ICommentRepository> _commentRepositoryMock;
+    private readonly Mock<ICurrentUserService> _currentUserServiceMock;
 
     public UserCommentsControllerTests(CustomWebApplicationFactory factory)
     {
         _client = factory.CreateClient();
-        _commentRepositoryMock = factory.CommentRepositoryMock; // Access the mock from the factory
-        var currentUserServiceMock = factory.CurrentUserServiceMock; // Access the mock from the factory
+        _commentRepositoryMock = factory.CommentRepositoryMock;
+        _currentUserServiceMock = factory.CurrentUserServiceMock;
 
         // Reset mocks before each test to ensure isolation
         _commentRepositoryMock.Invocations.Clear();
-        currentUserServiceMock.Invocations.Clear();
+        _currentUserServiceMock.Invocations.Clear();
 
-        // Default setup for current user service for UserCommentsController
-        currentUserServiceMock.Setup(s => s.UserId).Returns(1);
-        currentUserServiceMock.Setup(s => s.Role).Returns(UserRole.User);
+        // Default setup for current user
+        _currentUserServiceMock.Setup(s => s.UserId).Returns(1);
+        _currentUserServiceMock.Setup(s => s.Role).Returns(UserRole.User);
     }
 
     [Fact]
@@ -34,7 +35,8 @@ public class UserCommentsControllerTests : IClassFixture<CustomWebApplicationFac
     {
         // Arrange
         var createCommentDto = new CreateCommentDto(1, "Test Content", 5);
-        _commentRepositoryMock.Setup(r => r.GetBookingAvailableForCommentAsync(It.IsAny<int>(), It.IsAny<int>()))
+        _commentRepositoryMock
+            .Setup(r => r.GetBookingAvailableForCommentAsync(It.IsAny<int>(), It.IsAny<int>()))
             .ReturnsAsync(new Booking { Id = 1, UserId = 1, HotelId = 1 });
 
         // Act

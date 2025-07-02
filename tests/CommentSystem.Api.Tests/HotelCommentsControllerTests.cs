@@ -19,7 +19,7 @@ public class HotelCommentsControllerTests : IClassFixture<CustomWebApplicationFa
         _client = factory.CreateClient();
         _commentRepositoryMock = factory.CommentRepositoryMock;
 
-        // Clear invocations to ensure isolation between tests
+        // Reset mocks before each test to ensure isolation
         _commentRepositoryMock.Invocations.Clear();
     }
 
