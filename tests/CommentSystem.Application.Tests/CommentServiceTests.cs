@@ -12,7 +12,7 @@ namespace CommentSystem.Application.Tests;
 public class CommentServiceTests
 {
     private readonly Mock<ICommentRepository> _commentRepositoryMock;
-    private static IMapper _mapper;
+    private static readonly IMapper _mapper;
     private readonly CommentService _commentService;
 
     static CommentServiceTests()
