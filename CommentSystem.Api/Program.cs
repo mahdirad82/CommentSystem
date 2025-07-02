@@ -65,6 +65,6 @@ app.MapControllers();
 
 app.Run();
 /// <summary>
-/// This partial class is added to make the Program class accessible for testing purposes.
+/// This partial class is added to make the Program class accessible for testing.
 /// </summary>
 public partial class Program;
