@@ -12,15 +12,20 @@ namespace CommentSystem.Application.Tests;
 public class CommentServiceTests
 {
     private readonly Mock<ICommentRepository> _commentRepositoryMock;
+    private static IMapper _mapper;
     private readonly CommentService _commentService;
+
+    static CommentServiceTests()
+    {
+        var mapperConfig = new MapperConfiguration(cfg =>
+            cfg.AddProfile(new AutoMapperProfile()));
+        _mapper = mapperConfig.CreateMapper();
+    }
 
     public CommentServiceTests()
     {
         _commentRepositoryMock = new Mock<ICommentRepository>();
-        var mapperConfig = new MapperConfiguration(cfg =>
-            cfg.AddProfile(new AutoMapperProfile()));
-        var mapper = mapperConfig.CreateMapper();
-        _commentService = new CommentService(_commentRepositoryMock.Object, mapper);
+        _commentService = new CommentService(_commentRepositoryMock.Object, _mapper);
     }
 
     [Fact]
