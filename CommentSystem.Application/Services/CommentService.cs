@@ -11,7 +11,7 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
 {
     public async Task<Result> CreateCommentAsync(CreateCommentDto dto, int userId)
     {
-        if (!await commentRepository.IsBookingAvailableForCommentAsync(dto.BookingId, userId))
+        if (await commentRepository.GetBookingAvailableForCommentAsync(dto.BookingId, userId) is null)
             return Result.Failure(
                 "This booking either does not exist, does not belong to you, or already has a comment associated with it.");
 

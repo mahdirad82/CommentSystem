@@ -10,6 +10,6 @@ public interface ICommentRepository
     Task<IEnumerable<Comment>> GetByHotelIdAndStatusAsync(int hotelId, CommentStatus status = CommentStatus.Approved);
     Task<IEnumerable<Comment>> GetByUserIdAsync(int userId);
     Task<IEnumerable<Comment>> GetAllAsync(CommentStatus? status = null);
-    Task<bool> IsBookingAvailableForCommentAsync(int bookingId, int userId);
+    Task<Booking?> GetBookingAvailableForCommentAsync(int bookingId, int userId);
     Task<int> SaveChangesAsync();
 }

@@ -37,9 +37,9 @@ public class CommentRepository(AppDbContext context) : ICommentRepository
         return await query.ToListAsync();
     }
 
-    public async Task<bool> IsBookingAvailableForCommentAsync(int bookingId, int userId)
+    public async Task<Booking?> GetBookingAvailableForCommentAsync(int bookingId, int userId)
     {
-        return await context.Bookings.AnyAsync(b =>
+        return await context.Bookings.FirstOrDefaultAsync(b =>
             b.Id == bookingId &&
             b.UserId == userId &&
             b.Comment == null);
