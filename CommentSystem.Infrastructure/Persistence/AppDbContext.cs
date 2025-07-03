@@ -31,6 +31,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.Property(c => c.Rating).IsRequired();
             entity.Property(c => c.Status).IsRequired();
             entity.Property(c => c.CreatedAt).IsRequired();
+            entity.Property(c => c.Version).IsConcurrencyToken();
         });
 
         modelBuilder.Seed();

@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CommentSystem.Infrastructure.Repositories;
 
-
 public class CommentRepository(AppDbContext context) : ICommentRepository
 {
     public async Task AddAsync(Comment comment) => await context.Comments.AddAsync(comment);
@@ -31,7 +30,7 @@ public class CommentRepository(AppDbContext context) : ICommentRepository
     {
         var query = context.Comments.AsNoTracking();
         if (status.HasValue)
-        { 
+        {
             query = query.Where(c => c.Status == status.Value);
         }
 
@@ -52,9 +51,15 @@ public class CommentRepository(AppDbContext context) : ICommentRepository
         {
             await context.SaveChangesAsync();
         }
-        catch (DbUpdateException e) when (e.InnerException?.Message.Contains("IX_Comments_BookingId") ?? false)
+        catch (DbUpdateException e) when
+            (e.InnerException?.Message.Contains("IX_Comments_BookingId") ?? false)
         {
             throw new DuplicateCommentException("A comment for this booking already exists.");
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            throw new ConcurrencyException(
+                "The comment has been modified by another user. Please refresh and try again.");
         }
     }
 }

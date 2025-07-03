@@ -9,6 +9,7 @@ public class Comment
     public int Rating { get; init; }
     public CommentStatus Status { get; set; } = CommentStatus.Pending;
     public DateTime CreatedAt { get; init; }
+    public Guid Version { get; set; } = Guid.NewGuid();
 
     public int BookingId { get; init; }
     public Booking Booking { get; init; } = null!;

@@ -75,7 +75,16 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
             return Result.Failure("New Status is not approved or not rejected.");
 
         comment.Status = dto.NewStatus;
-        await commentRepository.SaveChangesAsync();
-        return Result.Success();
+        comment.Version = Guid.NewGuid();
+
+        try
+        {
+            await commentRepository.SaveChangesAsync();
+            return Result.Success();
+        }
+        catch (ConcurrencyException e)
+        {
+            return Result.Failure(e.Message);
+        }
     }
 }
