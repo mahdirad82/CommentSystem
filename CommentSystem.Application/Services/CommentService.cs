@@ -17,9 +17,16 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
 
         var comment = mapper.Map<Comment>(dto);
 
-        await commentRepository.AddAsync(comment);
-        await commentRepository.SaveChangesAsync();
-        return Result.Success();
+        try
+        {
+            await commentRepository.AddAsync(comment);
+            await commentRepository.SaveChangesAsync();
+            return Result.Success();
+        }
+        catch (DuplicateCommentException e)
+        {
+            return Result.Failure(e.Message);
+        }
     }
 
     public async Task<Result<IEnumerable<PublicCommentDto>>> GetApprovedCommentsForHotelAsync(
@@ -63,7 +70,7 @@ public class CommentService(ICommentRepository commentRepository, IMapper mapper
 
         if (comment.Status != CommentStatus.Pending)
             return Result.Failure("Comment is not pending.");
-        
+
         if (dto.NewStatus is not (CommentStatus.Approved or CommentStatus.Rejected))
             return Result.Failure("New Status is not approved or not rejected.");
 

@@ -1,3 +1,4 @@
+using CommentSystem.Application.Common;
 using CommentSystem.Application.Interfaces;
 using CommentSystem.Domain.Entities;
 using CommentSystem.Domain.Enums;
@@ -30,7 +31,7 @@ public class CommentRepository(AppDbContext context) : ICommentRepository
     {
         var query = context.Comments.AsNoTracking();
         if (status.HasValue)
-        {
+        { 
             query = query.Where(c => c.Status == status.Value);
         }
 
@@ -45,8 +46,15 @@ public class CommentRepository(AppDbContext context) : ICommentRepository
             b.Comment == null);
     }
 
-    public async Task<int> SaveChangesAsync()
+    public async Task SaveChangesAsync()
     {
-        return await context.SaveChangesAsync();
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateException e) when (e.InnerException?.Message.Contains("IX_Comments_BookingId") ?? false)
+        {
+            throw new DuplicateCommentException("A comment for this booking already exists.");
+        }
     }
 }

@@ -26,6 +26,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         modelBuilder.Entity<Comment>(entity =>
         {
             entity.HasKey(c => c.Id);
+            entity.HasIndex(c => c.BookingId).IsUnique();
             entity.Property(c => c.Content).IsRequired();
             entity.Property(c => c.Rating).IsRequired();
             entity.Property(c => c.Status).IsRequired();
